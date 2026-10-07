@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/news";
+const API_URL =
+    `${process.env.NEXT_PUBLIC_API_URL}/api/news`;
 
 export type NewsItem = {
     _id: string;
