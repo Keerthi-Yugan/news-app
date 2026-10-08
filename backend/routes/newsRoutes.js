@@ -4,12 +4,13 @@ const router = express.Router();
 
 const {
     getAllNews,
+    createNews,
     getNewsById,
     getNewsByCategory,
     searchNews,
-    createNews,
-    getTrendingNews,
     getCategories,
+    getTrendingNews,
+    getGNews,
 } = require("../controllers/newsController");
 
 const {
@@ -27,6 +28,8 @@ router.get("/categories", getCategories);
 
 
 router.get("/trending", getTrendingNews);
+
+router.get("/gnews", getGNews);
 
 // Get news by category
 router.get("/category/:category", getNewsByCategory);

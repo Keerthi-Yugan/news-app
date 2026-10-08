@@ -1,5 +1,9 @@
 const News = require("../models/news");
 
+const {
+    getTopHeadlines,
+} = require("../services/gnewsService");
+
 const getAllNews = async (req, res) => {
     try {
         const news = await News.find()
@@ -218,6 +222,30 @@ const getTrendingNews = async (req, res) => {
     }
 };
 
+const getGNews = async (req, res) => {
+    try {
+        const { category = "general" } = req.query;
+
+        const articles = await getTopHeadlines(category);
+
+        res.status(200).json({
+            success: true,
+            data: articles,
+        });
+    } catch (error) {
+        console.error(
+            "GNews API Error:",
+            error.response?.data || error.message
+        );
+
+        res.status(500).json({
+            success: false,
+            message: "GNews request limit reached. Please try again later.",
+            data: [],
+        });
+    }
+};
+
 
 module.exports = {
     getAllNews,
@@ -226,5 +254,6 @@ module.exports = {
     searchNews,
     createNews,
     getCategories,
-    getTrendingNews
+    getTrendingNews,
+    getGNews
 };
