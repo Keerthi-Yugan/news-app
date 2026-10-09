@@ -78,7 +78,7 @@ export async function getTrendingNews() {
     return response.data.data as NewsItem[];
 }
 
-export async function getGNews(
+export async function getAllGNews(
     category = "general"
 ) {
     const response = await axios.get(
@@ -92,3 +92,18 @@ export async function getGNews(
 
     return response.data.data as GNewsItem[];
 }
+
+
+export async function getTrendingGNews(
+    category = "general"
+) {
+    const response = await axios.get(
+        `${API_URL}/trending/gnews`,
+        {
+            params: { category },
+        }
+    );
+
+    return response.data.data as GNewsItem[];
+}
+

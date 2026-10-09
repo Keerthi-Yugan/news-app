@@ -1,5 +1,5 @@
-const express = require("express");
 
+const express = require("express");
 const router = express.Router();
 
 const {
@@ -11,6 +11,7 @@ const {
     getCategories,
     getTrendingNews,
     getGNews,
+    getTrendingGNews,
 } = require("../controllers/newsController");
 
 const {
@@ -21,31 +22,27 @@ const {
 // Get all news
 router.get("/", getAllNews);
 
-// Search news
+// Search and categories
 router.get("/search", searchNews);
-
 router.get("/categories", getCategories);
 
-
+// Trending MongoDB news
 router.get("/trending", getTrendingNews);
 
+// Latest GNews
 router.get("/gnews", getGNews);
+
+// Trending GNews
+router.get("/trending/gnews", getTrendingGNews);
 
 // Get news by category
 router.get("/category/:category", getNewsByCategory);
 
-
 // Get single news
 router.get("/:id", getNewsById);
 
-
-
 // Create news - admin only
-router.post(
-    "/",
-    protect,
-    adminOnly,
-    createNews
-);
+router.post("/", protect, adminOnly, createNews);
 
 module.exports = router;
+
