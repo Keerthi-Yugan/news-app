@@ -4,54 +4,51 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const categories = [
-{ name: "General", slug: "general" },
-{ name: "World", slug: "world" },
-{ name: "National", slug: "nation" },
-{ name: "Technology", slug: "technology" },
-{ name: "Business", slug: "business" },
-{ name: "Sports", slug: "sports" },
-{ name: "Science", slug: "science" },
-{ name: "Entertainment", slug: "entertainment" },
-{ name: "Health", slug: "health" },
+  { name: "General", slug: "general" },
+  { name: "World", slug: "world" },
+  { name: "Technology", slug: "technology" },
+  { name: "Business", slug: "business" },
+  { name: "Sports", slug: "sports" },
+  { name: "Science", slug: "science" },
+  { name: "Entertainment", slug: "entertainment" },
+  { name: "Health", slug: "health" },
 ];
 
 export default function CategoryList() {
-const pathname = usePathname();
+  const pathname = usePathname();
 
-return (
-    <section className="border-b border-[var(--border)] bg-[var(--surface)] py-4">
-        <div className="mx-auto max-w-7xl px-6">
-            <h3 className="mb-3 text-lg font-bold text-[var(--text-primary)]">
-                Categories
-            </h3>
+  return (
+    <nav
+      aria-label="News categories"
+      className="border-t border-[var(--border)] max-w-7xl flex items-start justify-start md:items-center justify-center overflow-x-auto m-auto px-6 py-4 text-[var(--primary)] font-bold"
+    >
 
-            <nav
-                aria-label="News categories"
-                className="overflow-x-auto"
+
+      <h3 className="shrink-0 bg-[var(--primary)] px-5 py-3 pr-8 font-bold text-white [clip-path:polygon(0_0,85%_0,100%_50%,85%_100%,0_100%)]">
+        Categories
+      </h3>
+
+
+      <div className="mx-auto flex max-w-7xl gap-6  px-6 py-3">
+        {categories.map((category) => {
+          const href = `/news/${category.slug}`;
+          const isActive = pathname === href;
+
+          return (
+            <Link
+              key={category.slug}
+              href={href}
+              aria-current={isActive ? "page" : undefined}
+              className={`shrink-0 text-sm font-medium transition-colors ${isActive
+                  ? "text-[var(--primary)]"
+                  : "text-[var(--foreground)] hover:text-[var(--primary)]"
+                }`}
             >
-                <div className="flex min-w-max items-center gap-6">
-                    {categories.map((category) => {
-                        const href = `/category/${category.slug}`;
-                        const active = pathname === href;
-
-                        return (
-                            <Link
-                                key={category.slug}
-                                href={href}
-                                aria-current={active ? "page" : undefined}
-                                className={`whitespace-nowrap border-b-2 py-2 text-sm transition-colors ${
-                                    active
-                                        ? "border-[var(--primary)] font-semibold text-[var(--primary)]"
-                                        : "border-transparent text-[var(--text-secondary)] hover:text-[var(--primary)]"
-                                }`}
-                            >
-                                {category.name}
-                            </Link>
-                        );
-                    })}
-                </div>
-            </nav>
-        </div>
-    </section>
-);
+              {category.name}
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
+  );
 }

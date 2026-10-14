@@ -14,7 +14,7 @@ const getGTopHeadlines = async (category = "general") => {
         cache[category] &&
         now - cache[category].timestamp < CACHE_DURATION
     ) {
-        console.log(`Using cached GNews: ${category}`);
+        // console.log(`Using cached GNews: ${category}`);
 
         return cache[category].data;
     }
@@ -36,7 +36,7 @@ const getGTopHeadlines = async (category = "general") => {
 
     const articles = response.data.articles;
     
-    console.log(`Fetched GNews`, articles);
+    // console.log(`Fetched GNews`, articles);
 
     // Save response in cache
     cache[category] = {
@@ -44,7 +44,7 @@ const getGTopHeadlines = async (category = "general") => {
         timestamp: now,
     };
 
-    console.log(`Fetched fresh GNews: ${category}`);
+    // console.log(`Fetched fresh GNews: ${category}`);
 
     return articles;
 };

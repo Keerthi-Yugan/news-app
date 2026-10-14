@@ -58,7 +58,7 @@ export default function Navbar() {
     return (
         <header className="border-b border-[var(--border)] bg-[var(--surface)]">
             {/* Main navbar */}
-            <div className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-4">
+            <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
                 <Link
                     href="/"
                     className="shrink-0 text-2xl font-bold"
@@ -67,7 +67,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Search */}
-                <form
+                {/* <form
                     onSubmit={handleSearch}
                     className="ml-auto hidden w-full max-w-sm md:flex"
                 >
@@ -89,7 +89,7 @@ export default function Navbar() {
                             Search
                         </button>
                     </div>
-                </form>
+                </form> */}
 
                 {/* Theme and Login */}
                 <div className="flex shrink-0 items-center gap-3">
@@ -109,8 +109,6 @@ export default function Navbar() {
                     </Link>
                 </div>
             </div>
-
-            {/* Categories */}
             
         </header>
     );
