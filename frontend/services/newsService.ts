@@ -28,9 +28,16 @@ export type GNewsItem = {
 };
 
 export async function getAllNews() {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(
+        `${API_URL}/gnews`,
+        {
+            params: {
+                category: "general",
+            },
+        }
+    );
 
-    return response.data.data as NewsItem[];
+    return response.data.data as GNewsItem[];
 }
 
 export async function getNewsById(id: string) {
