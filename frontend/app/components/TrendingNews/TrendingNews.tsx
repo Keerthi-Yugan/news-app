@@ -90,17 +90,23 @@ export default function TrendingNews({ news }: TrendingNewsProps) {
             More Trending
           </h3>
 
-          {bottomNews.map((item) => (
-            <div key={item.id} className="min-w-0">
-              <NewsCard
-                id={item.id}
-                title={item.title}
-                description={item.description}
-                category={item.category}
-                image={item.image}
-              />
-            </div>
-          ))}
+          {bottomNews?.length > 0 ? (
+            bottomNews.map((item) => (
+              <div key={item.id} className="min-w-0">
+                <NewsCard
+                  id={item.id}
+                  title={item.title}
+                  description={item.description}
+                  category={item.category}
+                  image={item.image}
+                />
+              </div>
+            ))
+          ) : (
+            <p className="py-4 text-sm text-gray-500">
+              No trending news available at the moment.
+            </p>
+          )}
         </aside>
       </div>
     </section>

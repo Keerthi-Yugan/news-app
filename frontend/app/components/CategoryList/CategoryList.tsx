@@ -24,7 +24,7 @@ export default function CategoryList() {
     >
 
 
-      <h3 className="shrink-0 bg-[var(--primary)] px-5 py-3 pr-8 font-bold text-white [clip-path:polygon(0_0,85%_0,100%_50%,85%_100%,0_100%)]">
+      <h3 className="shrink-0 bg-[var(--primary)] px-3 py-1 pr-8 font-bold text-white [clip-path:polygon(0_0,85%_0,100%_50%,85%_100%,0_100%)]">
         Categories
       </h3>
 
